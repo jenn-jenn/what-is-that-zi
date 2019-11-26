@@ -7,8 +7,10 @@
 body, a {
     /* background-color: rgb(37, 37, 37); */
     background-color: rgb(131, 131, 131);
-
     text-decoration: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: content-box;
 }
 
 .hidden {
@@ -19,6 +21,7 @@ body, a {
     border: 5px blue solid;
     width: 840px;
     height: 600px;
+    margin: auto;
 }
 
 .game {
@@ -36,11 +39,59 @@ body, a {
 
 .main {
     width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .left,
 .right {
     width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.deck {
+    border: 1px pink dotted;
+    height: 30%;
+    margin: 5px;
+}
+
+.btn {
+    margin: 20px;
+    padding: 15px 15px;
+    border: 1px black solid;
+    border-radius: 5px;
+    background: transparent;
+}
+
+.quiz {
+    border: 1px green solid;
+    margin: 10px;
+    height: 90%;
+    
+}
+
+.card {
+    border: 1px blue solid;
+    height: 60%;
+    margin: 10px;
+}
+
+.choice-section {
+    border: 1px red solid;
+    margin: 10px;
+    height: calc(40% - 36px);
+    display: flex;
+    flex-direction: row;
+}
+
+.choice {
+    border: 1px white solid;
+    width: 50%;
+    height: calc(100% - 12px);
+    margin: 5px 10px;
 }
 
 .links {
