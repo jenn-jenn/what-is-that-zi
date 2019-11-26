@@ -1,16 +1,28 @@
-/* * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-} */
 
 body, a {
     /* background-color: rgb(37, 37, 37); */
-    background-color: rgb(131, 131, 131);
+    /* background-color: rgb(12, 12, 12); */
     text-decoration: none;
     padding: 0;
     margin: 0;
-    box-sizing: content-box;
+    box-sizing: border-box;
+    font-family: 'Quicksand', sans-serif;
+    color: black;
+}
+
+h1 {
+    text-align: center;
+    font-family: source-han-sans-traditional, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+p {
+
+}
+
+progress {
+    margin: auto;
 }
 
 .hidden {
@@ -19,6 +31,7 @@ body, a {
 
 .canvas {
     border: 5px blue solid;
+    /* background-color: rgb(88, 88, 88); */
     width: 840px;
     height: 600px;
     margin: auto;
@@ -53,9 +66,22 @@ body, a {
 }
 
 .deck {
-    border: 1px pink dotted;
+    border: 1px black dotted;
     height: 30%;
     margin: 5px;
+    text-align: center;
+}
+
+.flashcards {
+
+}
+
+.correct {
+
+}
+
+.wrong {
+    /* margin-top: -50px; */
 }
 
 .btn {
@@ -64,19 +90,38 @@ body, a {
     border: 1px black solid;
     border-radius: 5px;
     background: transparent;
+    color: black;
+}
+
+.start-btn {
+    margin: 20px 150px;
 }
 
 .quiz {
     border: 1px green solid;
     margin: 10px;
     height: 90%;
-    
+}
+
+#character {
+    border: 1px black solid;
+    height: calc(55% - 20px);
+    margin: 10px;
+    text-align: center;
+}
+
+.definition {
+    border: 1px black solid;
+    height: calc(45% - 18px);
+    margin: 10px;
 }
 
 .card {
     border: 1px blue solid;
+    border-radius: 10px;
     height: 60%;
-    margin: 10px;
+    width: 70%;
+    margin: 10px auto;
 }
 
 .choice-section {
@@ -88,7 +133,8 @@ body, a {
 }
 
 .choice {
-    border: 1px white solid;
+    border: 1px black dotted;
+    border-radius: 10px;
     width: 50%;
     height: calc(100% - 12px);
     margin: 5px 10px;
