@@ -1,0 +1,51 @@
+/* * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} */
+
+body, a {
+    /* background-color: rgb(37, 37, 37); */
+    background-color: rgb(131, 131, 131);
+
+    text-decoration: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.canvas {
+    border: 5px blue solid;
+    width: 840px;
+    height: 600px;
+}
+
+.game {
+    border: 2px red solid;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    
+}
+.container {
+    border: 2px white solid;
+    margin: 6px;
+    border-radius: 5px;
+}
+
+.main {
+    width: 800px;
+}
+
+.left,
+.right {
+    width: 400px;
+}
+
+.links {
+    text-align: center;
+    margin: 10px;
+}
+
+
