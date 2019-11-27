@@ -1,13 +1,12 @@
 
 body, a {
-    /* background-color: rgb(37, 37, 37); */
-    /* background-color: rgb(12, 12, 12); */
+    background-color: #fff4e3;
     text-decoration: none;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
-    color: black;
+    color: #5d5d5a;
 }
 
 h1 {
@@ -18,34 +17,48 @@ h1 {
 }
 
 p {
-
+    text-align: center;
+    vertical-align: center;
+    width: 100%;
 }
 
-progress {
-    margin: auto;
-}
+/* -------------- CLASS ---------------- */
 
 .hidden {
     display: none;
 }
 
+.fadeout {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.2s, opacity .2s linear;
+}
+
+.fadein {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s linear;
+
+}
+
 .canvas {
-    border: 5px blue solid;
-    /* background-color: rgb(88, 88, 88); */
+    border: 5px #5d5d5a solid;
+    border-radius: 20px;
+    background-color: #fff4e3;
     width: 840px;
-    height: 600px;
+    height: 500px;
     margin: auto;
+    padding: 10px;
 }
 
 .game {
-    border: 2px red solid;
-    height: 80%;
+    border-radius: 16px;
+    height: 90%;
     display: flex;
     flex-direction: row;
-    
 }
 .container {
-    border: 2px white solid;
+    border: 2px #5d5d5a solid;
     margin: 6px;
     border-radius: 5px;
 }
@@ -54,7 +67,7 @@ progress {
     width: 800px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .left,
@@ -63,17 +76,17 @@ progress {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
 .deck {
-    border: 1px black dotted;
+    border: 1px #ffa45c dotted;
     height: 30%;
-    margin: 5px;
+    margin: 10px;
     text-align: center;
 }
 
 .flashcards {
-
 }
 
 .correct {
@@ -81,51 +94,57 @@ progress {
 }
 
 .wrong {
-    /* margin-top: -50px; */
 }
 
 .btn {
     margin: 20px;
     padding: 15px 15px;
-    border: 1px black solid;
+    border: 1px #ffa45c solid;
     border-radius: 5px;
-    background: transparent;
-    color: black;
+    background-color: #f7a867;
+    color: white;
+    box-shadow: 2px 1px 10px 1px #ffa45c;
+    transition: 0.5s;  
+}
+
+.btn:hover {
+    background-color: #ffd0b0;
+    color: #000000;
+    cursor: crosshair;
+}
+
+.btn:active {
+    transform: translateY(5px);
+    
+}
+
+.btn:focus {
+    outline: none;
 }
 
 .start-btn {
     margin: 20px 150px;
 }
 
-.quiz {
-    border: 1px green solid;
-    margin: 10px;
-    height: 90%;
-}
 
-#character {
-    border: 1px black solid;
-    height: calc(55% - 20px);
-    margin: 10px;
-    text-align: center;
-}
 
 .definition {
-    border: 1px black solid;
-    height: calc(45% - 18px);
+    height: 85px;
     margin: 10px;
 }
 
 .card {
-    border: 1px blue solid;
     border-radius: 10px;
     height: 60%;
-    width: 70%;
     margin: 10px auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
 }
 
 .choice-section {
-    border: 1px red solid;
+    border: 1px #ffa45c solid ;
     margin: 10px;
     height: calc(40% - 36px);
     display: flex;
@@ -133,16 +152,52 @@ progress {
 }
 
 .choice {
-    border: 1px black dotted;
+    border: 1px dotted;
     border-radius: 10px;
     width: 50%;
     height: calc(100% - 12px);
     margin: 5px 10px;
+    font-size: 80px;
 }
 
-.links {
+.links{
     text-align: center;
     margin: 10px;
+    
 }
 
+.links > a {
+    color: #010101;
+    background-color: transparent;
+}
 
+.progress-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* --------------- ID ----------------- */
+
+#character {
+    height: calc(60% - 20px);
+    margin: 10px;
+    text-align: center;
+}
+
+#quiz {
+    border: 1px #ffa45c solid;
+    margin: 10px;
+    height: 90%;
+}
+
+#directions {
+    border: 2px #ffa45c dashed;
+    border-radius: 10px;
+    margin: 10px;
+    height: 40%;
+    font-size: 30px;
+    vertical-align: middle;
+    text-align: center;
+    
+}

@@ -16,36 +16,46 @@
     <div class="canvas">
         <div class="game">
             <section class="container left">
-                <h1>O</h1>
+                <h1><img src="img/o.png" ></h1>
                 <div class="deck correct">
                 </div>
                 <div class="deck flashcards">
                     <div class="flashcards"></div>
                 </div>
-                <button class="btn restart-btn">
+                <button class="btn restart-btn" onclick=clickRestart()>
                     RESTART
                 </button>
             </section>
             <section class="container main">
-                <div class="quiz">
+                <div id="quiz" class="hidden">
                     <div class="card">
                         <div id="character"></div>
-                        <!-- <div class="definition"></div> -->
+                        <p class="definition">hello</p>
                     </div>
                     <section class="choice-section">
                         <div class="choice"></div>
                         <div class="choice"></div>
                     </section>
                 </div>
-                <button class="btn start-btn">
+                <div id="directions">
+                    <p class="directions-p">
+                        Memorize the characters! 
+                        <br>
+                        Then choose the correct definition.
+                    </p>
+                </div>
+                <button class="btn start-btn" onclick=clickStart()>
                     START
                 </button>
             </section>
             <section class="container right">
-                <h1>X</h1>
+                <h1><img src="img/x.png"></h1>
                 <div class="deck wrong"></div>
-                <p>0/10</p>
-                <progress max="100" value="10"></progress>
+                <div class="deck progress-div">
+                    <p>0/10</p>
+                    <progress max="100" value=""></progress>
+                </div>
+                
                 <button class="btn end-btn">
                     END
                 </button>
@@ -58,7 +68,7 @@
         </div>
     </div>
    
-    <script src='./src/flashcard.js'></script>
+    <script src='./src/index.js'></script>
     <script>
         (function (d) {
             var config = {
