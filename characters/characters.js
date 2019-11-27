@@ -1,4 +1,4 @@
-var characters = [
+const characters = [
     {"character":"也","definition":"also, too","pinyin":["yě"],"decomposition":"⿻？乚","radical":"乚","matches":[null,null,[1]]},
     {"character":"享","definition":"to share; to enjoy; to benefit from","pinyin":["xiǎng"],"decomposition":"⿳亠口子","etymology":{"type":"ideographic","hint":"Children 子 living and eating 口 in the house 亠"},"radical":"亠","matches":[[0],[0],[1],[1],[1],[2],[2],[2]]},
     {"character":"亮","definition":"bright, brilliant, radiant, light","pinyin":["liàng"],"decomposition":"⿳亠口⿱冖几","etymology":{"type":"pictographic","hint":"A lit oil lamp"},"radical":"亠","matches":[[0],[0],[1],[1],[1],[2,0],[2,0],[2,1],[2,1]]},
@@ -107,3 +107,11 @@ var characters = [
     .pinyin
     .character
 */
+// const getRandom = (n) => {
+//     var randomChars = []
+//     for(let i = 0; i < n; i++) {
+//         randomChars[i] = characters[Math.floor(Math.random() * characters.length)];
+//     }
+//     return randomChars;
+// }
+

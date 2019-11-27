@@ -81,12 +81,21 @@ p {
 
 .deck {
     border: 1px #ffa45c dotted;
+    border-radius: 10px;
     height: 30%;
     margin: 10px;
     text-align: center;
 }
 
 .flashcards {
+    display: flex;
+    justify-content: center;
+}
+.flashcards > img {
+    border: 1px solid orange;
+    border-radius: 10px;
+    width: 100%;
+    
 }
 
 .correct {
@@ -160,18 +169,50 @@ p {
     font-size: 80px;
 }
 
-.links{
-    text-align: center;
+.links {
     margin: 10px;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.links > li {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     
 }
 
-.links > a {
+.links > li > a {
     color: #010101;
     background-color: transparent;
+    margin: 10px 10px;    
+    transition: font-size 0.5s;
+}
+
+.links > li > a:hover {
+    border-bottom: 3px #ffa45c dotted;   
+    padding: 0; 
+    font-size: 20px;
+}
+
+.links > a:after {
+    font-size: 20px;
+    overflow: hidden;
+    visibility: hidden;
 }
 
 .progress-div {
+    /* border: 1px #ffa45c dotted; */
+    border-radius: 10px;
+    height: 30%;
+    margin: 11px;
+    text-align: center;
+
     display: flex;
     flex-direction: column;
     align-items: center;
