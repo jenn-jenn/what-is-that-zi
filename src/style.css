@@ -29,16 +29,10 @@ p {
 }
 
 .fadeout {
-    /* visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s 0.2s, opacity .2s linear; */
     animation: fadeOut ease 1s;
 }
 
 .fadein {
-    /* visibility: visible;
-    opacity: 1;
-    transition: opacity 1s ease-in; */
     animation: fadeIn ease 1s;
 }
 
@@ -58,7 +52,6 @@ p {
     height: 500px;
     margin: auto;
     padding: 10px;
-
 }
 
 .game {
@@ -67,6 +60,7 @@ p {
     display: flex;
     flex-direction: row;
 }
+
 .container {
     border: 2px #5d5d5a solid;
     margin: 6px;
@@ -102,11 +96,24 @@ p {
     display: flex;
     justify-content: center;
 }
-.flashcards > img {
+.flashcard {
+    position: absolute;
+    width: calc(90% - 2px);
+}
+.front {
+    /* visibility: hidden; */
+    position: absolute;
+}
+
+.front > div {
+    width: 100%;
+    text-align: middle;
+}
+
+.back > img {
     border: 1px solid orange;
     border-radius: 10px;
-    width: 100%;
-    
+    width: 100%;    
 }
 
 .correct {
@@ -235,16 +242,19 @@ span.counter {
 
 /* --------------- ID ----------------- */
 
-#character {
-    height: calc(60% - 20px);
-    margin: 10px;
-    text-align: center;
+.flashcard#character {
+    position: absolute;
+
+    /* height: calc(60% - 20px); */
+    /* margin: 10px; */
+    /* text-align: center; */
 }
 
 #quiz {
     border: 1px #ffa45c solid;
     margin: 10px;
     height: 90%;
+    width: 90%;
 }
 
 #practice {
