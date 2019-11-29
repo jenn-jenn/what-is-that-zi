@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.1/dist/hanzi-writer.min.js"></script>
+    <script src='./characters//characters.js'></script>
     <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./src/style.css">
     <title>中文 Flashcards</title>
@@ -13,7 +14,7 @@
     <div class="title">
         <h1>中文 Flashcards</h1>
     </div>
-    <div class="canvas">
+    <div class="main-container">
         <div class="game">
             <section class="container left">
                 <h1><img src="img/o.png" ></h1>
@@ -24,11 +25,17 @@
                         <img src="/img/backface.png" >
                     </div>
                 </div>
-                <button class="btn restart-btn" onclick=clickRestart()>
+                <button id="restart-btn" class="btn">
                     RESTART
                 </button>
             </section>
             <section class="container main">
+                <div id="practice" class="">
+                    <div class="card">
+                        <div id="character"></div>
+                        <p class="definition"></p>
+                    </div>
+                </div>
                 <div id="quiz" class="hidden">
                     <div class="card">
                         <div id="character"></div>
@@ -39,14 +46,14 @@
                         <div class="choice"></div>
                     </section>
                 </div>
-                <div id="directions">
+                <div id="directions" class="hidden">
                     <p class="directions-p">
                         Memorize the characters! 
                         <br>
                         Then choose the correct definition.
                     </p>
                 </div>
-                <button class="btn start-btn" onclick=clickStart()>
+                <button id="start-btn" class="btn hidden">
                     START
                 </button>
             </section>

@@ -29,19 +29,28 @@ p {
 }
 
 .fadeout {
-    visibility: hidden;
+    /* visibility: hidden;
     opacity: 0;
-    transition: visibility 0s 0.2s, opacity .2s linear;
+    transition: visibility 0s 0.2s, opacity .2s linear; */
+    animation: fadeOut ease 1s;
 }
 
 .fadein {
-    visibility: visible;
+    /* visibility: visible;
     opacity: 1;
-    transition: opacity 1s linear;
-
+    transition: opacity 1s ease-in; */
+    animation: fadeIn ease 1s;
 }
 
-.canvas {
+@keyframes fadeIn {
+    0% { opacity: 0;}
+    100% { opacity: 1;}
+}
+@keyframes fadeOut {
+    100% { opacity: 0;}
+    0% { opacity: 1;}
+}
+.main-container {
     border: 5px #5d5d5a solid;
     border-radius: 20px;
     background-color: #fff4e3;
@@ -130,12 +139,6 @@ p {
 .btn:focus {
     outline: none;
 }
-
-.start-btn {
-    margin: 20px 150px;
-}
-
-
 
 .definition {
     height: 85px;
@@ -232,6 +235,12 @@ p {
     height: 90%;
 }
 
+#practice {
+    border: 1px #ffa45c solid;
+    margin: 30px;
+    height: 80%;
+}
+
 #directions {
     border: 2px #ffa45c dashed;
     border-radius: 10px;
@@ -239,6 +248,9 @@ p {
     height: 40%;
     font-size: 30px;
     vertical-align: middle;
-    text-align: center;
-    
+    text-align: center;   
+}
+
+#start-btn {
+    margin: 20px 150px;
 }
