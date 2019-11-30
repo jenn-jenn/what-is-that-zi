@@ -5,8 +5,10 @@ let counter_span = document.getElementsByClassName('counter')[0];
 let countdown_div = document.getElementById('countdown');
 let overlay_div = document.getElementsByClassName('overlay')[0];
 let deckFlashcards_div = document.getElementsByClassName('deck')[1];
-
-console.log(deckFlashcards_div);
+let practice_div = document.getElementById('practice');
+let practice_char = document.querySelectorAll('#practice > .card > #character')[0];
+let practice_def = document.querySelectorAll('#practice > .card > p')[0];
+let practice_pinyin = document.querySelectorAll('#practice > .card > p')[1];
 
 const deck = [];
 
@@ -14,7 +16,7 @@ function createFlashcards() {
     let char, def, pinyin, newCard, front, back, character, p, charID;
     let img = document.createElement('img');
     img.src = '/img/backface.png';
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 1; i++) {
         char = deck[i].character;
         def = deck[i].definition;
         pinyin = deck[i].pinyin;
@@ -27,24 +29,70 @@ function createFlashcards() {
         back = document.createElement('div');
         back.className = 'back';
         character = document.createElement('div');
-        charID = `character-${i}`;
+        charID = 'character'
         character.id = charID;
             
         let writer = HanziWriter.create(character, char, {
-            width: 20, height: 20, padding: 1
+            width: 40, height: 40, padding: 0
         });
+
         p = document.createElement('p');
         p.className = 'definition'
+        p.innerHTML = def;
         front.appendChild(character);
         front.appendChild(p);
         back.appendChild(img);  
         newCard.appendChild(front);
         newCard.appendChild(back);
         deckFlashcards_div.append(newCard);
-    }
-    
+    }   
 }
 
+function hideShowCards() {
+    console.log('hiding practice');
+    practice_div.classList.add('fadeout');
+    setTimeout(function () {
+        practice_div.classList.add('hidden');
+    }, 1000);
+}
+
+function showCards() {
+    practice_div.classList.add('fadein');
+
+    setTimeout(function() {
+        practice_div.classList.remove('hidden');
+    }, 1000);
+    
+    let i = 0;
+    let intervalId = setInterval(nextCard, 2000);
+    let char, def, pinyin;
+
+    function nextCard() {
+        if(i === deck.length) {
+            clearInterval(intervalId);
+
+        } else{
+            let svg = document.querySelectorAll('svg')[0];
+            console.log(svg);
+            if(svg){
+                svg.remove();
+            }
+            
+            let c = deck[i];
+            char = c.character;
+            def = c.definition;
+            pinyin = c.pinyin
+
+            let writer = HanziWriter.create(practice_char, char, {
+                width: 100, height: 100, padding: 0
+            });
+            practice_pinyin.innerHTML = pinyin;
+            practice_def.innerHTML = def;
+            i++;
+        }
+ 
+    }  
+}
 
 function getRandom() {
     let randomI, char;
@@ -57,7 +105,7 @@ function getRandom() {
             i--;
         }
     }
-    createFlashcards();
+    // createFlashcards();
 } 
 
 function showQuiz() {
@@ -81,11 +129,10 @@ function decreaseCounter(callback, delay, reps) {
                 overlay_div.style.display = 'none';
                 countdown_div.style.display = 'none';
             }, 1000);
-            // showQuiz();
-            // showCards();
+            showCards();
+            
         }
-    }, delay);
-    
+    }, delay);    
 }
 
 function startCountdown() {
@@ -106,7 +153,6 @@ function hideDirectionsAndStart() {
         startCountdown();
     }, 1000);
 }
- 
 
 start_btn.addEventListener('click', function() {
     getRandom();

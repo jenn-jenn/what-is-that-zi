@@ -101,8 +101,9 @@ p {
     width: calc(90% - 2px);
 }
 .front {
-    /* visibility: hidden; */
+    display: none;
     position: absolute;
+    width: 100%;
 }
 
 .front > div {
@@ -150,17 +151,20 @@ p {
 }
 
 .definition {
-    height: 85px;
     margin: 10px;
+    border: 1px solid black;
+    height: 60%;
+    width: 80%;
 }
 
 .card {
     border-radius: 10px;
-    height: 60%;
+    height: 100%;
     margin: 10px auto;
     display: flex;
     align-items: center;
     flex-direction: column;
+    /* line-height: 100%; */
     
 }
 
@@ -242,12 +246,11 @@ span.counter {
 
 /* --------------- ID ----------------- */
 
-.flashcard#character {
-    position: absolute;
+#character {
+    /* display: none; */
+    border: 1px dotted blue;
+    margin-top: 10px;
 
-    /* height: calc(60% - 20px); */
-    /* margin: 10px; */
-    /* text-align: center; */
 }
 
 #quiz {
@@ -261,6 +264,14 @@ span.counter {
     border: 1px #ffa45c solid;
     margin: 30px;
     height: 80%;
+    width: 90%;
+}
+
+#practice > .card > * {
+    font-size: 25px;
+    /* line-height: normal; */
+    /* vertical-align: middle; */
+    border: 1px pink solid;
 }
 
 #directions {
