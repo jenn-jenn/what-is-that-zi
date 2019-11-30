@@ -190,7 +190,7 @@ p {
     list-style: none;
     display: flex;
     justify-content: space-evenly;
-
+    
 }
 
 .links > li {
@@ -214,6 +214,7 @@ p {
     border-bottom: 3px #ffa45c dotted;   
     padding: 0; 
     font-size: 20px;
+    cursor: crosshair;
 }
 
 .links > a:after {
