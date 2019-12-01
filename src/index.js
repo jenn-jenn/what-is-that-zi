@@ -11,8 +11,6 @@ let practice_def = document.querySelectorAll('#practice > .card > .definition')[
 let practice_pinyin = document.querySelectorAll('#practice > .card > .pinyin')[0];
 
 const deck = [];
-console.log(practice_def);
-console.log(practice_pinyin);
 
 function createFlashcards() {
     let char, def, pinyin, newCard, front, back, character, p, charID;
@@ -51,30 +49,23 @@ function createFlashcards() {
     }   
 }
 
-function hideShowCards() {
-    console.log('hiding practice');
-    practice_div.classList.add('fadeout');
-    setTimeout(function () {
-        practice_div.classList.add('hidden');
-    }, 2000);
-}
 
 function showCards() {
     practice_div.classList.add('fadein');
 
     setTimeout(function() {
+        practice_div.classList.remove('fadein');
         practice_div.classList.remove('hidden');
-    }, 1000);
+    }, 2000);
     
     let i = 0;
-    let intervalId = setInterval(nextCard, 2000);
+    let intervalId = setInterval(nextCard, 500);
     let char, def, pinyin;
 
     function nextCard() {
         if(i === deck.length) {
             clearInterval(intervalId);
-            // hideShowCards();
-
+            hideShowCards();
         } else{
             let svg = document.querySelectorAll('svg')[0];
             console.log(svg);
@@ -90,12 +81,20 @@ function showCards() {
             let writer = HanziWriter.create(practice_char, char, {
                 width: 100, height: 100, padding: 0
             });
+
             practice_pinyin.innerHTML = pinyin;
             practice_def.innerHTML = def;
             i++;
         }
-        debugger;
     }  
+}
+
+
+function hideShowCards() {
+    practice_div.classList.add('fadeout');
+    setTimeout(function () {
+        practice_div.classList.add('hidden');
+    }, 2500);
 }
 
 function getRandom() {
@@ -145,7 +144,6 @@ function startCountdown() {
 }
 
 function hideDirectionsAndStart() {
-    console.log("hiding..");
     directions_div.classList.add('fadeout');
     start_btn.classList.add('fadeout');
     setTimeout(function(){
