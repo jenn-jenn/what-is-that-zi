@@ -7,15 +7,18 @@ let overlay_div = document.getElementsByClassName('overlay')[0];
 let deckFlashcards_div = document.getElementsByClassName('deck')[1];
 let practice_div = document.getElementById('practice');
 let practice_char = document.querySelectorAll('#practice > .card > #character')[0];
-let practice_def = document.querySelectorAll('#practice > .card > p')[0];
-let practice_pinyin = document.querySelectorAll('#practice > .card > p')[1];
+let practice_def = document.querySelectorAll('#practice > .card > .definition')[0];
+let practice_pinyin = document.querySelectorAll('#practice > .card > .pinyin')[0];
 
 const deck = [];
+console.log(practice_def);
+console.log(practice_pinyin);
 
 function createFlashcards() {
     let char, def, pinyin, newCard, front, back, character, p, charID;
     let img = document.createElement('img');
     img.src = '/img/backface.png';
+
     for (let i = 0; i < 1; i++) {
         char = deck[i].character;
         def = deck[i].definition;
@@ -53,7 +56,7 @@ function hideShowCards() {
     practice_div.classList.add('fadeout');
     setTimeout(function () {
         practice_div.classList.add('hidden');
-    }, 1000);
+    }, 2000);
 }
 
 function showCards() {
@@ -70,6 +73,7 @@ function showCards() {
     function nextCard() {
         if(i === deck.length) {
             clearInterval(intervalId);
+            // hideShowCards();
 
         } else{
             let svg = document.querySelectorAll('svg')[0];
@@ -90,7 +94,7 @@ function showCards() {
             practice_def.innerHTML = def;
             i++;
         }
- 
+        debugger;
     }  
 }
 
@@ -130,7 +134,6 @@ function decreaseCounter(callback, delay, reps) {
                 countdown_div.style.display = 'none';
             }, 1000);
             showCards();
-            
         }
     }, delay);    
 }

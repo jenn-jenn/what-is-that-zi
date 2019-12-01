@@ -151,10 +151,13 @@ p {
 }
 
 .definition {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     margin: 10px;
     border: 1px solid black;
-    height: 60%;
-    width: 80%;
+    height: 45%;
 }
 
 .card {
@@ -163,9 +166,7 @@ p {
     margin: 10px auto;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    /* line-height: 100%; */
-    
+    flex-direction: column;   
 }
 
 .choice-section {
@@ -270,11 +271,12 @@ span.counter {
 
 #practice > .card > * {
     font-size: 25px;
-    /* line-height: normal; */
-    /* vertical-align: middle; */
-    border: 1px pink solid;
+    border: 1px pink solid; 
 }
 
+/* #practice > .card > p {
+
+} */
 #directions {
     border: 2px #ffa45c dashed;
     border-radius: 10px;
