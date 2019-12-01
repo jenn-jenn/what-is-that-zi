@@ -1,4 +1,5 @@
 let start_btn = document.getElementById('start-btn');
+let restart_btn = document.getElementById('restart-btn');
 let directions_div = document.getElementById('directions');
 let quiz = document.getElementById('quiz');
 let counter_span = document.getElementsByClassName('counter')[0];
@@ -6,48 +7,8 @@ let countdown_div = document.getElementById('countdown');
 let overlay_div = document.getElementsByClassName('overlay')[0];
 let deckFlashcards_div = document.getElementsByClassName('deck')[1];
 let practice_div = document.getElementById('practice');
-let practice_char = document.querySelectorAll('#practice > .card > #character')[0];
-let practice_def = document.querySelectorAll('#practice > .card > .definition')[0];
-let practice_pinyin = document.querySelectorAll('#practice > .card > .pinyin')[0];
 
 const deck = [];
-
-function createFlashcards() {
-    let char, def, pinyin, newCard, front, back, character, p, charID;
-    let img = document.createElement('img');
-    img.src = '/img/backface.png';
-
-    for (let i = 0; i < 1; i++) {
-        char = deck[i].character;
-        def = deck[i].definition;
-        pinyin = deck[i].pinyin;
-        newCard = document.createElement('div');
-        newCard.className = 'flashcard';
-
-        front = document.createElement('div');
-        front.className = 'front';
-
-        back = document.createElement('div');
-        back.className = 'back';
-        character = document.createElement('div');
-        charID = 'character'
-        character.id = charID;
-            
-        let writer = HanziWriter.create(character, char, {
-            width: 40, height: 40, padding: 0
-        });
-
-        p = document.createElement('p');
-        p.className = 'definition'
-        p.innerHTML = def;
-        front.appendChild(character);
-        front.appendChild(p);
-        back.appendChild(img);  
-        newCard.appendChild(front);
-        newCard.appendChild(back);
-        deckFlashcards_div.append(newCard);
-    }   
-}
 
 function hideShowCards() {
     practice_div.classList.add('fadeout');
@@ -57,8 +18,51 @@ function hideShowCards() {
     }, 2500);
 }
 
-function createCard(char) {
-    
+function fadeCard(card, delay) {
+    setTimeout(function () {
+        card.classList.add('fadeout');
+        setTimeout(function () {
+            card.classList.add('invisible')
+        }, delay - (delay * .20));
+    }, delay - (delay * .8));
+}
+
+function createCard(zi, delay) {
+    let char, def, py;
+    let c = zi;
+    char = c.character;
+    def = c.definition;
+    py = c.pinyin
+
+    let card = document.createElement('div');
+    let definition = document.createElement('div');
+    let pinyin = document.createElement('div');
+    let character = document.createElement('div');
+
+    card.className = 'card';
+    character.id = 'character';
+    definition.className = 'definition';
+    pinyin.className = 'pinyin';
+    let writer = HanziWriter.create(character, char, {
+        width: 100, height: 100, padding: 0
+    })
+
+    pinyin.innerHTML = py;
+    definition.innerHTML = def;
+    card.appendChild(character);
+    card.appendChild(definition);
+    card.appendChild(pinyin);
+    card.classList.add('fadein');
+    practice_div.appendChild(card);
+    fadeCard(card, delay);
+}
+
+function removePractice() {
+    practice_div.classList.add('fadeout');
+    setTimeout(function () {
+        practice_div.classList.add('hidden');
+        practice_div.classList.remove('fadeout');
+    }, 4000);
 }
 
 function showCards() {
@@ -69,54 +73,16 @@ function showCards() {
     }, 2000);
     
     let i = 0;
-    let delay = 2500;
+    let delay = 3000;
     let intervalId = setInterval(nextCard, delay);
-    let char, def, py;
-
+    
     function nextCard() {
         if(i === deck.length) {
-            console.log('clearing interval and hiding cards');
             clearInterval(intervalId);
-            practice_div.classList.add('fadeout');
-            setTimeout(function () {
-                practice_div.classList.add('hidden');
-                practice_div.classList.remove('fadeout');
-            }, 1000);
+            removePractice();
         } else{
-            let c = deck[i];
-            char = c.character;
-            def = c.definition;
-            py = c.pinyin
-
-            let card = document.createElement('div');
-            let definition = document.createElement('div');
-            let pinyin = document.createElement('div');
-            let character = document.createElement('div');
-
-            card.className = 'card';
-            character.id = 'character';
-            definition.className = 'definition';
-            pinyin.className = 'pinyin';
-            let writer = HanziWriter.create(character, char, {
-                width: 100, height: 100, padding: 0
-            })
-
-            pinyin.innerHTML = py;
-            definition.innerHTML = def;
+            createCard(deck[i], delay);
             i++;
-            card.appendChild(character);
-            card.appendChild(definition);
-            card.appendChild(pinyin);
-            card.classList.add('fadein');
-            practice_div.appendChild(card);
-            
-            setTimeout(function() {
-                card.classList.add('fadeout');
-                setTimeout(function () {
-                    card.classList.add('invisible')
-                }, delay - 500);
-            }, delay-2000);
-            
         }
     }  
 }
@@ -182,11 +148,20 @@ function hideDirectionsAndStart() {
     }, 1000);
 }
 
+function clearAll() {
+    practice_div.classList.add(hidd)
+}
+
+
 start_btn.addEventListener('click', function() {
     getRandom();
     start_btn.disabled = 'disabled';
     setTimeout(hideDirectionsAndStart, 500);
-})
+});
 
-rest
+restart_btn.addEventListener('click', function() {
+    getRandom();
+    restart_btn.disabled = 'disabled';
+    setTimeout(clearAll, 500);
+});
 
