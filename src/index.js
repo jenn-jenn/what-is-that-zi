@@ -49,53 +49,78 @@ function createFlashcards() {
     }   
 }
 
+function hideShowCards() {
+    practice_div.classList.add('fadeout');
+    setTimeout(function () {
+        practice_div.classList.add('hidden');
+        practice_div.classList.remove('fadeout');
+    }, 2500);
+}
+
+function createCard(char) {
+    
+}
 
 function showCards() {
     practice_div.classList.add('fadein');
-
     setTimeout(function() {
         practice_div.classList.remove('fadein');
         practice_div.classList.remove('hidden');
     }, 2000);
     
     let i = 0;
-    let intervalId = setInterval(nextCard, 500);
-    let char, def, pinyin;
+    let delay = 2500;
+    let intervalId = setInterval(nextCard, delay);
+    let char, def, py;
 
     function nextCard() {
         if(i === deck.length) {
+            console.log('clearing interval and hiding cards');
             clearInterval(intervalId);
-            hideShowCards();
+            practice_div.classList.add('fadeout');
+            setTimeout(function () {
+                practice_div.classList.add('hidden');
+                practice_div.classList.remove('fadeout');
+            }, 1000);
         } else{
-            let svg = document.querySelectorAll('svg')[0];
-            console.log(svg);
-            if(svg){
-                svg.remove();
-            }
-            
             let c = deck[i];
             char = c.character;
             def = c.definition;
-            pinyin = c.pinyin
+            py = c.pinyin
 
-            let writer = HanziWriter.create(practice_char, char, {
+            let card = document.createElement('div');
+            let definition = document.createElement('div');
+            let pinyin = document.createElement('div');
+            let character = document.createElement('div');
+
+            card.className = 'card';
+            character.id = 'character';
+            definition.className = 'definition';
+            pinyin.className = 'pinyin';
+            let writer = HanziWriter.create(character, char, {
                 width: 100, height: 100, padding: 0
-            });
+            })
 
-            practice_pinyin.innerHTML = pinyin;
-            practice_def.innerHTML = def;
+            pinyin.innerHTML = py;
+            definition.innerHTML = def;
             i++;
+            card.appendChild(character);
+            card.appendChild(definition);
+            card.appendChild(pinyin);
+            card.classList.add('fadein');
+            practice_div.appendChild(card);
+            
+            setTimeout(function() {
+                card.classList.add('fadeout');
+                setTimeout(function () {
+                    card.classList.add('invisible')
+                }, delay - 500);
+            }, delay-2000);
+            
         }
     }  
 }
 
-
-function hideShowCards() {
-    practice_div.classList.add('fadeout');
-    setTimeout(function () {
-        practice_div.classList.add('hidden');
-    }, 2500);
-}
 
 function getRandom() {
     let randomI, char;
@@ -108,7 +133,6 @@ function getRandom() {
             i--;
         }
     }
-    // createFlashcards();
 } 
 
 function showQuiz() {
@@ -129,6 +153,7 @@ function decreaseCounter(callback, delay, reps) {
             counter_span.classList.add('fadeout');
             setTimeout(function() {
                 counter_span.classList.add('hidden');
+                counter_span.classList.remove('fadeout');
                 overlay_div.style.display = 'none';
                 countdown_div.style.display = 'none';
             }, 1000);
@@ -149,6 +174,8 @@ function hideDirectionsAndStart() {
     setTimeout(function(){
         directions_div.classList.add('hidden');
         start_btn.classList.add('hidden');
+        directions_div.classList.remove('fadeout');
+        start_btn.classList.remove('fadeout');
         countdown_div.style.display = 'flex';
         overlay_div.classList.remove('hidden');
         startCountdown();
@@ -157,9 +184,9 @@ function hideDirectionsAndStart() {
 
 start_btn.addEventListener('click', function() {
     getRandom();
-    console.log('clicked start');
-    console.log(deck);
     start_btn.disabled = 'disabled';
     setTimeout(hideDirectionsAndStart, 500);
 })
+
+rest
 
