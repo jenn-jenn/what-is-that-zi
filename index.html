@@ -19,6 +19,9 @@
             <section class="container left">
                 <h1><img src="img/o.png" ></h1>
                 <div class="deck correct">
+                    <div id="left-deck" class="hidden">
+
+                    </div>
                 </div>
                 <div class="deck flashcards invisible">
                 </div>
@@ -31,33 +34,26 @@
                     <span class="counter">3</span>
                 </div>
                 <div class="overlay hidden"></div>
-                <div id="practice" class="hidden">
-                </div>
-                <div id="quiz" class="hidden">
-                    <div class="card">
-                        <div id="character"></div>
-                        <div class="definition"></div>
-                        <div class="pinyin"></div>
-                    </div>
-                    <section class="choice-section">
-                        <div class="choice"></div>
-                        <div class="choice"></div>
-                    </section>
-                </div>
-                <div id="directions" class="">
+                <div id="practice" class="hidden"></div>
+                <div id="quiz" class=""></div>
+                <div id="directions" class="hidden">
                     <p class="directions-p">
                         Memorize the characters! 
                         <br>
                         Then choose the correct definition.
                     </p>
                 </div>
-                <button id="start-btn" class="btn">
+                <button id="start-btn" class="btn hidden">
                     START
                 </button>
             </section>
             <section class="container right">
                 <h1><img src="img/x.png"></h1>
-                <div class="deck wrong"></div>
+                <div class="deck wrong">
+                    <div id="right-deck" class="hidden">
+                    
+                    </div>
+                </div>
                 <div class="progress-div">
                     <p>0/10</p>
                     <progress max="100" value=""></progress>
@@ -72,6 +68,7 @@
             <li><a href="">GitHub</a></li>
             <li><a href="">About</a></li>
             <li><a href="">LinkedIn</a></li>
+            <li id="testing" ><a href="">Testinggggg</a></li>
         </div>
     </div>
    

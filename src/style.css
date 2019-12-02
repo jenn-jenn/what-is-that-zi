@@ -166,11 +166,11 @@ p {
 
 .card {
     position: absolute;
+    background-color: #fff4e3;
     border-radius: 10px;
     height: 100%;
-    margin: 10px auto;
+    margin: 0px auto;
     display: flex;
-    align-items: center;
     flex-direction: column;   
     width: 100%;
     box-shadow: 0 5px 10px 0 black, 0 15px 20px 0 #07070720;
@@ -184,13 +184,15 @@ p {
     flex-direction: row;
 }
 
-.choice {
+.choice-section > div {
     border: 1px dotted;
     border-radius: 10px;
     width: 50%;
     height: calc(100% - 12px);
     margin: 5px 10px;
-    font-size: 80px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
 }
 
 .links {
@@ -251,6 +253,28 @@ span.counter {
   -ms-transform: translate(-50%,-50%);
 }
 
+.overlay {
+    position: fixed; /* Sit on top of the page content */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+.quiz-card {
+    border: 1px red solid;
+    width: 100%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 /* --------------- ID ----------------- */
 
 #character {
@@ -261,10 +285,12 @@ span.counter {
 }
 
 #quiz {
-    border: 1px #ffa45c solid;
+    /* border: 1px #ffa45c solid; */
+    border: 1px green dashed;
     margin: 10px;
     height: 90%;
     width: 90%;
+    position: relative;
 }
 
 #practice {
@@ -299,18 +325,7 @@ span.counter {
     justify-content: center;
     position: relative;
 }
-.overlay {
-    position: fixed; /* Sit on top of the page content */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-}
-
+ 
 #start-btn {
     margin: 20px 150px;
 }
