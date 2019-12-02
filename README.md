@@ -34,6 +34,7 @@ One of the challenges was trying to get the correct card when selecting an answe
 
 #### Future Goal
 + Better layout styling
-+ Refactor JS code
-+ Clean up CSS code
++ Let user choose whether to restart with current words or with new words
++ Refactor JS and CSS code
 + Add better animations
++ Possibly add pronunciation audio
