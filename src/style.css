@@ -21,8 +21,6 @@ p {
     width: 100%;
 }
 
-/* -------------- CLASS ---------------- */
-
 .hidden {
     display: none;
 }
@@ -129,14 +127,6 @@ p {
     width: 100%;    
 }
 
-.correct {
-
-}
-
-.wrong {
-
-}
-
 .btn {
     margin: 20px;
     padding: 15px 15px;
@@ -187,7 +177,6 @@ p {
 }
 
 .choice-section {
-    /* border: 1px #ffa45c solid ; */
     margin: 10px;
     height: calc(60% - 36px);
     display: flex;
@@ -222,7 +211,6 @@ p {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
 }
 
 .links > li > a {
@@ -267,19 +255,18 @@ span.counter {
 }
 
 .overlay {
-    position: fixed; /* Sit on top of the page content */
-    width: 100%; /* Full width (cover the whole page) */
-    height: 100%; /* Full height (cover the whole page) */
+    position: fixed; 
+    width: 100%;
+    height: 100%; 
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2; 
 }
 
 .quiz-card {
-    /* border: 1px red solid; */
     width: 100%;
     height: 65%;
     display: flex;
@@ -346,26 +333,25 @@ span.counter {
     margin: 20px 150px;
 }
 
-
 #modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 100; /* Sit on top */
-  padding-top: 300px; /* Location of the box */
+  display: none; 
+  position: fixed; 
+  z-index: 100;
+  padding-top: 300px;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%; 
+  height: 100%;
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 .about {
-  background-color: #fefefe;
+  background-color: #cacaca;
   border-radius: 20px;
   margin: auto;
   padding: 30px;
-  border: 1px solid #888;
+  border: 1px solid black;
   width: 30%;
   font-size: 20px;
   display: flex;
