@@ -1,6 +1,7 @@
 let body = document.getElementsByTagName('body')[0];
 let start_btn = document.getElementById('start-btn');
 let restart_btn = document.getElementById('restart-btn');
+let end_btn = document.getElementById('end-btn');
 let directions_div = document.getElementById('directions');
 let quiz_div = document.getElementById('quiz');
 let counter_span = document.getElementsByClassName('counter')[0];
@@ -12,6 +13,8 @@ let practice_div = document.getElementById('practice');
 let progressBar = document.getElementById('progress-tracker');
 let ptLabel = document.getElementById('pt-label');
 let gameOver_div = document.getElementById('game-over');
+let aboutModal_link = document.getElementById('aboutLink');
+let close = document.getElementsByClassName('close')[0];
 
 
 let intervalId, choice_section;
@@ -102,7 +105,6 @@ function showCards() {
         }
     }  
 }
-
 
 function getRandom() {
     let randomI, char;
@@ -300,14 +302,38 @@ function clearAll() {
 
 start_btn.addEventListener('click', function() {
     getRandom();
-    console.log(deck);
     start_btn.disabled = 'disabled';
     setTimeout(hideDirectionsAndStart, 500);
 });
 
 restart_btn.addEventListener('click', function() {
-    console.log('restarting....');
-    console.log(deck);
     restart_btn.disabled = 'disabled';
     setTimeout(clearAll, 500);
 });
+end_btn.addEventListener('click', function () {
+    end_btn.disabled = 'disabled';
+    setTimeout(function() {
+        if (intervalId) {
+            clearInterval(intervalId);
+        }
+        gameOver_div.classList.add('hidden');
+        directions_div.classList.add('hidden');
+        start_btn.classList.add('hidden');
+        practice_div.classList.add('hidden');
+        quiz_div.classList.add('hidden');
+        leftDeck_div.classList.add('hidden');
+        rightDeck_div.classList.add('hidden');
+        gameOver();
+    }, 500);
+});
+
+aboutModal_link.addEventListener('click', e => {
+    e.preventDefault();
+    modal.style.display = "block";
+});
+
+body.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
