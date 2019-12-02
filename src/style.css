@@ -172,6 +172,8 @@ p {
     margin: 0px auto;
     display: flex;
     flex-direction: column;   
+    justify-content: center;
+    align-items: center;
     width: 100%;
     box-shadow: 0 5px 10px 0 black, 0 15px 20px 0 #07070720;
 }
@@ -192,7 +194,9 @@ p {
     margin: 5px 10px;
     font-size: 20px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 .links {

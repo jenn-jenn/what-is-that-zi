@@ -76,8 +76,8 @@ function removePractice() {
 function showCards() {
     practice_div.classList.add('fadein');
     setTimeout(function() {
-        practice_div.classList.remove('fadein');
         practice_div.classList.remove('hidden');
+        practice_div.classList.remove('fadein');
     }, 2000);
     
     let i = 0;
@@ -139,6 +139,7 @@ function createQuizCard(zi) {
     quizCard.className = 'quiz-card';
     character.id = 'character';
     pinyin.className = 'pinyin';
+
     let writer = HanziWriter.create(character, char, {
         width: 150, height: 150, padding: 0
     })
@@ -168,10 +169,10 @@ function createQuizCard(zi) {
 function showQuiz() {
     console.log('showing quiz')
     quiz_div.classList.add('fadein');
+    quiz_div.classList.remove('hidden');
 
     for(let i = 0; i < deck.length; i++){
         createQuizCard(deck[i]);
-        debugger
     }
 }
 
@@ -220,6 +221,7 @@ function hideDirectionsAndStart() {
 
 function clearAll() {
     practice_div.classList.add('hidden');
+    quiz_div.classList.add('hidden');
     leftDeck_div.classList.add('hidden');
     rightDeck_div.classList.add('hidden');
     if(intervalId){
@@ -228,7 +230,7 @@ function clearAll() {
     counter_span.innerHTML = 3;
     counter_span.classList.add('fadein');
     counter_span.classList.remove('hidden');
-    overlay_div.style.display = '';
+    overlay_div.style.display = 'flex';
     countdown_div.style.display = 'flex';
     
     setTimeout(startCountdown, 1000);
@@ -254,6 +256,5 @@ restart_btn.addEventListener('click', function() {
 testing.addEventListener('click', function() {
     getRandom();
     showQuiz();
-    debugger
 })
 
