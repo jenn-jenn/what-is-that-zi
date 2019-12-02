@@ -9,13 +9,14 @@ let overlay_div = document.getElementsByClassName('overlay')[0];
 let leftDeck_div = document.getElementById('left-deck');
 let rightDeck_div = document.getElementById('right-deck');
 let practice_div = document.getElementById('practice');
+let progressBar = document.getElementById('progress-tracker');
+let ptLabel = document.getElementById('pt-label');
+let gameOver_div = document.getElementById('game-over');
 
 
 let intervalId, choice_section;
 
 let deck = [];
-let wrong = [];
-let correct = [];
 
 function hideShowCards() {
     practice_div.classList.add('fadeout');
@@ -80,6 +81,7 @@ function removePractice() {
 }
 
 function showCards() {
+    restart_btn.disabled = "";
     practice_div.classList.add('fadein');
     setTimeout(function() {
         practice_div.classList.remove('hidden');
@@ -87,8 +89,7 @@ function showCards() {
     }, 2000);
     
     let i = 0;
-    // let delay = 3000;
-    let delay = 500;
+    let delay = 3000;
     intervalId = setInterval(nextCard, delay);
     
     function nextCard() {
@@ -116,12 +117,42 @@ function getRandom() {
     }
 } 
 
+function gameOver() {
+    gameOver_div.classList.add('fadein');
+
+    setTimeout(function() {
+        gameOver_div.classList.remove('fadein');
+        gameOver_div.classList.remove('hidden');
+        quiz_div.innerHTML = "";
+    }, 1000);
+
+
+}
+
 function checkAnswer(e) {
-    if(e.target.dataset.answer === true) {
-        // send to left;
+    let allCards = document.querySelectorAll('div.current');
+    let thisCard = allCards[allCards.length - 1];
+    let zIndex = deck.length - allCards.length;
+    
+    if(e.target.dataset.answer === 'true') {
+        progressBar.value += 10;
+        ptLabel.innerHTML++; 
+        thisCard.classList.add('moveleft');
+        thisCard.style.zIndex = zIndex;
     } else {
-        // send to right;
+        thisCard.classList.add('moveright');
+        thisCard.style.zIndex = zIndex;
     }
+    thisCard.classList.remove('current');
+    if(zIndex === 9) {
+        quiz_div.classList.add('fadeout')
+        setTimeout(function() {
+            quiz_div.classList.add('hidden');
+            quiz_div.classList.remove('fadeout')
+            gameOver();
+        }, 1000);
+    }
+}
 
 function createQuizCard(zi, i) {
 
@@ -188,9 +219,7 @@ function createQuizCard(zi, i) {
     card.appendChild(quizCard);
     card.appendChild(choice_section);
     quiz_div.appendChild(card);
-    if (i !== deck.length - 1) {
-        card.classList.add('hidden');
-    }
+    card.classList.add('current');
 }
 
 function showQuiz() {
@@ -201,6 +230,7 @@ function showQuiz() {
     for(let i = 0; i < deck.length; i++){
         createQuizCard(deck[i], i);
     }
+    practice_div.innerHTML = "";
 }
 
 function decreaseCounter(callback, delay, reps) {
@@ -245,14 +275,21 @@ function hideDirectionsAndStart() {
 }
 
 function clearAll() {
+    gameOver_div.classList.add('hidden');
+    directions_div.classList.add('hidden');
+    start_btn.classList.add('hidden');
     practice_div.classList.add('hidden');
     quiz_div.classList.add('hidden');
     leftDeck_div.classList.add('hidden');
     rightDeck_div.classList.add('hidden');
+
+    
     if(intervalId){
         clearInterval(intervalId);
     }
     counter_span.innerHTML = 3;
+    ptLabel.innerHTML = 0;
+    progressBar.value = 0;
     counter_span.classList.add('fadein');
     counter_span.classList.remove('hidden');
     overlay_div.style.display = 'flex';
@@ -271,8 +308,6 @@ start_btn.addEventListener('click', function() {
 restart_btn.addEventListener('click', function() {
     console.log('restarting....');
     console.log(deck);
-    correct = [];
-    wrong = [];
     restart_btn.disabled = 'disabled';
     setTimeout(clearAll, 500);
 });

@@ -39,6 +39,13 @@ p {
     animation: fadeIn ease 1s;
 }
 
+.moveleft {
+    transform: translate(-88%, -12%) scale(0.45);
+}
+.moveright {
+    transform: translate(88%, -12%) scale(0.45);
+}
+
 @keyframes fadeIn {
     0% { opacity: 0;}
     100% { opacity: 1;}
@@ -89,7 +96,6 @@ p {
 }
 
 .deck {
-    border: 1px #ffa45c dotted;
     border-radius: 10px;
     height: 30%;
     margin: 10px;
@@ -181,7 +187,7 @@ p {
 .choice-section {
     /* border: 1px #ffa45c solid ; */
     margin: 10px;
-    height: calc(40% - 36px);
+    height: calc(60% - 36px);
     display: flex;
     flex-direction: row;
 }
@@ -239,10 +245,10 @@ p {
 
 .progress-div {
     border-radius: 10px;
-    height: 30%;
-    margin: 11px;
+    height: 15%;
+    margin: 10px;
     text-align: center;
-
+    /* padding-top: 50px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -279,23 +285,26 @@ span.counter {
     align-items: center;
 }
 
-
-/* --------------- ID ----------------- */
+.pt-label-div {
+    margin-bottom: 5px;
+}
 
 #character {
-    /* display: none; */
-    /* border: 1px dotted blue; */
     margin-top: 10px;
-
 }
 
 #quiz {
-    /* border: 1px #ffa45c solid; */
-    border: 1px green dashed;
     margin: 10px;
     height: 90%;
     width: 90%;
     position: relative;
+}
+
+#game-over {
+    margin: 10px;
+    height: 90%;
+    width: 90%;
+    font-size: 80px;
 }
 
 #practice {
