@@ -1,3 +1,4 @@
+let body = document.getElementsByTagName('body')[0];
 let start_btn = document.getElementById('start-btn');
 let restart_btn = document.getElementById('restart-btn');
 let directions_div = document.getElementById('directions');
@@ -9,9 +10,8 @@ let leftDeck_div = document.getElementById('left-deck');
 let rightDeck_div = document.getElementById('right-deck');
 let practice_div = document.getElementById('practice');
 
-let intervalId;
 
-let testing = document.getElementById('testing');
+let intervalId, choice_section;
 
 let deck = [];
 let wrong = [];
@@ -87,7 +87,8 @@ function showCards() {
     }, 2000);
     
     let i = 0;
-    let delay = 3000;
+    // let delay = 3000;
+    let delay = 500;
     intervalId = setInterval(nextCard, delay);
     
     function nextCard() {
@@ -115,7 +116,14 @@ function getRandom() {
     }
 } 
 
-function createQuizCard(zi) {
+function checkAnswer(e) {
+    if(e.target.dataset.answer === true) {
+        // send to left;
+    } else {
+        // send to right;
+    }
+
+function createQuizCard(zi, i) {
 
     console.log('creating quiz card');
     let char, realDef, def1, py, left;
@@ -131,7 +139,6 @@ function createQuizCard(zi) {
     left = Math.floor(Math.random() * 2); 
     // if 0 left, 1 right
     def1 = characters[randomNum].definition;
-
 
     let card = document.createElement('div'); 
     let quizCard = document.createElement('div');
@@ -160,16 +167,30 @@ function createQuizCard(zi) {
 
     if(left === 0){
         choice_one.innerHTML = realDef;
+        choice_one.setAttribute('data-answer', 'true')
         choice_two.innerHTML = def1;
+        choice_two.setAttribute('data-answer', 'false')
     } else {
         choice_one.innerHTML = def1;
+        choice_one.setAttribute('data-answer', 'false')
         choice_two.innerHTML = realDef;
+        choice_two.setAttribute('data-answer', 'true')
     }
+    choice_one.addEventListener('click', e => {
+        checkAnswer(e)
+    });
+    choice_two.addEventListener('click', e => {
+        checkAnswer(e)
+    });
+
     choice_section.appendChild(choice_one);
     choice_section.appendChild(choice_two);
     card.appendChild(quizCard);
     card.appendChild(choice_section);
     quiz_div.appendChild(card);
+    if (i !== deck.length - 1) {
+        card.classList.add('hidden');
+    }
 }
 
 function showQuiz() {
@@ -178,7 +199,7 @@ function showQuiz() {
     quiz_div.classList.remove('hidden');
 
     for(let i = 0; i < deck.length; i++){
-        createQuizCard(deck[i]);
+        createQuizCard(deck[i], i);
     }
 }
 
@@ -200,9 +221,7 @@ function decreaseCounter(callback, delay, reps) {
             }, 1000);
             showCards();
         }
-    }, delay);    
-    console.log(x);
-
+    }, delay);   
 }
 
 function startCountdown() {
@@ -257,10 +276,3 @@ restart_btn.addEventListener('click', function() {
     restart_btn.disabled = 'disabled';
     setTimeout(clearAll, 500);
 });
-
-
-testing.addEventListener('click', function() {
-    getRandom();
-    showQuiz();
-})
-

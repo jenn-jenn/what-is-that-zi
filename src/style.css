@@ -179,7 +179,7 @@ p {
 }
 
 .choice-section {
-    border: 1px #ffa45c solid ;
+    /* border: 1px #ffa45c solid ; */
     margin: 10px;
     height: calc(40% - 36px);
     display: flex;
@@ -187,7 +187,7 @@ p {
 }
 
 .choice-section > div {
-    border: 1px dotted;
+    border: 1px solid;
     border-radius: 10px;
     width: 50%;
     height: calc(100% - 12px);
@@ -197,6 +197,7 @@ p {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    cursor: pointer;
 }
 
 .links {
@@ -270,7 +271,7 @@ span.counter {
 }
 
 .quiz-card {
-    border: 1px red solid;
+    /* border: 1px red solid; */
     width: 100%;
     height: 65%;
     display: flex;
@@ -283,7 +284,7 @@ span.counter {
 
 #character {
     /* display: none; */
-    border: 1px dotted blue;
+    /* border: 1px dotted blue; */
     margin-top: 10px;
 
 }
