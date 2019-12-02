@@ -41,9 +41,11 @@ p {
 
 .moveleft {
     transform: translate(-88%, -12%) scale(0.45);
+    transition-duration: 0.5s;
 }
 .moveright {
     transform: translate(88%, -12%) scale(0.45);
+    transition-duration: 0.5s;
 }
 
 @keyframes fadeIn {
