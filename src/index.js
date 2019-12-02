@@ -69,8 +69,14 @@ function removePractice() {
     setTimeout(function () {
         practice_div.classList.add('hidden');
         practice_div.classList.remove('fadeout');
+        let children = practice_div.childNodes;
+        for(i = 0; i < children.length; i++){
+            children[i].classList.remove('fadeout');
+            children[i].classList.remove('fadein');
+            children[i].classList.remove('invisible');
+        }
         showQuiz();
-    }, 4000);
+    }, 2000);
 }
 
 function showCards() {
