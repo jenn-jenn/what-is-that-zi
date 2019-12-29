@@ -152,6 +152,12 @@ p {
     outline: none;
 }
 
+.btn:disabled {
+    background-color: #f7a867;
+    color: white;
+    cursor: crosshair;
+}
+
 .definition {
     display: flex;
     flex-direction: column;
@@ -313,7 +319,7 @@ span.counter {
     border: 2px #ffa45c dashed;
     border-radius: 10px;
     margin: 10px;
-    height: 40%;
+    height: 50%;
     font-size: 30px;
     vertical-align: middle;
     text-align: center;   

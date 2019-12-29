@@ -18,6 +18,12 @@ let close = document.getElementsByClassName('close')[0];
 
 
 let intervalId, choice_section;
+let gameStarted = false;
+
+if (!gameStarted) {
+    restart_btn.disabled = 'disabled';
+    end_btn.disabled = 'disabled';
+}
 
 let deck = [];
 
@@ -86,7 +92,9 @@ function removePractice() {
 function showCards() {
     restart_btn.disabled = "";
     practice_div.classList.add('fadein');
+    // console.log('showing cards...?')
     setTimeout(function() {
+        // console.log("removed hidden from practice div")
         practice_div.classList.remove('hidden');
         practice_div.classList.remove('fadein');
     }, 2000);
@@ -126,6 +134,7 @@ function gameOver() {
         gameOver_div.classList.remove('fadein');
         gameOver_div.classList.remove('hidden');
         quiz_div.innerHTML = "";
+        end_btn.disabled = "disabled";
     }, 1000);
 
 
@@ -225,7 +234,6 @@ function createQuizCard(zi, i) {
 }
 
 function showQuiz() {
-    console.log('showing quiz')
     quiz_div.classList.add('fadein');
     quiz_div.classList.remove('hidden');
 
@@ -238,11 +246,11 @@ function showQuiz() {
 function decreaseCounter(callback, delay, reps) {
     let x = 0;
     
-    let intervalId = setInterval(function() {
+    let intervalId2 = setInterval(function() {
         callback();
         x++;
         if(x === reps) {
-            clearInterval(intervalId);
+            clearInterval(intervalId2);
             counter_span.innerHTML = 'GO!';
             counter_span.classList.add('fadeout');
             setTimeout(function() {
@@ -303,11 +311,15 @@ function clearAll() {
 start_btn.addEventListener('click', function() {
     getRandom();
     start_btn.disabled = 'disabled';
+    // gameStarted = true;
+    restart_btn.disabled = '';
+    end_btn.disabled = '';
     setTimeout(hideDirectionsAndStart, 500);
 });
 
 restart_btn.addEventListener('click', function() {
     restart_btn.disabled = 'disabled';
+    end_btn.disabled = '';
     setTimeout(clearAll, 500);
 });
 end_btn.addEventListener('click', function () {
@@ -316,10 +328,10 @@ end_btn.addEventListener('click', function () {
         if (intervalId) {
             clearInterval(intervalId);
         }
+        practice_div.classList.add('hidden');
         gameOver_div.classList.add('hidden');
         directions_div.classList.add('hidden');
         start_btn.classList.add('hidden');
-        practice_div.classList.add('hidden');
         quiz_div.classList.add('hidden');
         leftDeck_div.classList.add('hidden');
         rightDeck_div.classList.add('hidden');
@@ -337,3 +349,4 @@ body.onclick = function (event) {
         modal.style.display = "none";
     }
 }
+
