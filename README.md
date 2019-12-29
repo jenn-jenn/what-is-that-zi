@@ -14,10 +14,11 @@ Live application: [What is that Zi?!](https://what-is-that-zi.herokuapp.com/)
 
 ### Feature Highlights
 
-#### Start, restart, end
+#### Start, Restart, End
 Users are able to click on these buttons to either begin, restart, or end the quiz
 
-![alt text](https://github.com/jenn-jenn/what-is-that-zi/blob/master/img/start.png "Start Page")
+![alt text](https://user-images.githubusercontent.com/16752858/71553903-145e1a00-29cc-11ea-846c-d8e68396f37a.png)
+ "Start Page")
 
 #### Show cards 
 Cards will be shown for about 3 seconds each, one at a time
@@ -31,6 +32,35 @@ Card will be placed in the correct spot.
 
 ### Challenges
 One of the challenges was trying to get the correct card when selecting an answer choice. Because the `click` event was attached to the answer choices, it was hard to tell which was the current card I want to work with. What I thought of was adding a `current` class to all the cards, and when I'm checking for the answer, I will look for the last child of that class and remove it. Therefore, each time I go through the quiz cards, the last child would be the card below the card I moved.
+
+### Code Snippet
+I utilized the `data-answer` attribute to mark whether a card is the correct answer or not, and then later use it to check for the correct answer upon clicking on one of the choices. 
+
+``` javascript
+    if(left === 0){
+        choice_one.innerHTML = realDef;
+        choice_one.setAttribute('data-answer', 'true')
+        choice_two.innerHTML = def1;
+        choice_two.setAttribute('data-answer', 'false')
+    } else {
+        choice_one.innerHTML = def1;
+        choice_one.setAttribute('data-answer', 'false')
+        choice_two.innerHTML = realDef;
+        choice_two.setAttribute('data-answer', 'true')
+    }
+```
+
+``` javascript
+    if(e.target.dataset.answer === 'true') {
+        progressBar.value += 10;
+        ptLabel.innerHTML++; 
+        thisCard.classList.add('moveleft');
+        thisCard.style.zIndex = zIndex;
+    } else {
+        thisCard.classList.add('moveright');
+        thisCard.style.zIndex = zIndex;
+    }
+```
 
 #### Future Goal
 + Better layout styling
