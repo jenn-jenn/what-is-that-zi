@@ -174,7 +174,7 @@ function checkAnswer(e) {
 
 function createQuizCard(zi, i) {
 
-    console.log('creating quiz card');
+    // console.log('creating quiz card');
     let char, realDef, def1, py, left;
     let c = zi;
     char = c.character;
