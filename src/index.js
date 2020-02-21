@@ -90,7 +90,7 @@ function removePractice() {
 }
 
 function showCards() {
-    console.log(deck);
+    // console.log(deck);
     restart_btn.disabled = "";
     end_btn.disabled = '';
     practice_div.classList.add('fadein');
