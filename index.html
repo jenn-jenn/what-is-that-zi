@@ -18,8 +18,13 @@
     </div>
     <div id="modal">
         <div class="about">
-            <h2>About</h2>
-            <p>Flashcards will show up for about 3 seconds each. Remember them and complete quiz. If you get them right, it will go to the checked section, otherwise the x-section. If you would like to restart, click on restart. If you would like to end, click on end</p>
+            <div class='x-div'>
+                <span onclick=closeModal()>&#10006;</span>
+            </div>
+            <div class='about-desc'>
+                <h2>About</h2>
+                <p>Flashcards will show up for about 3 seconds each. Remember them and complete quiz. If you get them right, it will go to the checked section, otherwise the x-section. If you would like to restart, click on restart. If you would like to end, click on end.</p>
+            </div>
         </div>
 
     </div>
@@ -47,7 +52,11 @@
                 <div id="quiz" class="hidden"></div>
                 <div id="game-over" class="hidden">
                     <p>Finished!</p>
+                    <button id="again-btn" class="btn" onclick=getNewDeck()>
+                        Play Again?
+                    </button>
                 </div>
+                
                 <div id="directions" class="">
                     <p class="directions-p">
                         Memorize the characters! 

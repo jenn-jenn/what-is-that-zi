@@ -90,7 +90,9 @@ function removePractice() {
 }
 
 function showCards() {
+    console.log(deck);
     restart_btn.disabled = "";
+    end_btn.disabled = '';
     practice_div.classList.add('fadein');
     // console.log('showing cards...?')
     setTimeout(function() {
@@ -115,6 +117,7 @@ function showCards() {
 }
 
 function getRandom() {
+    deck = [];
     let randomI, char;
     for(let i = 0; i < 10; i++) {
         randomI = Math.floor(Math.random() * characters.length);
@@ -128,9 +131,13 @@ function getRandom() {
 } 
 
 function gameOver() {
+    // deck = [];
     gameOver_div.classList.add('fadein');
+    gameOver_div.style.display = 'flex';
 
     setTimeout(function() {
+
+        // start_btn.classList.remove('hidden')
         gameOver_div.classList.remove('fadein');
         gameOver_div.classList.remove('hidden');
         quiz_div.innerHTML = "";
@@ -284,15 +291,21 @@ function hideDirectionsAndStart() {
     }, 1000);
 }
 
+function getNewDeck() {
+    deck = [];
+    getRandom();
+    setTimeout(clearAll, 500);
+}
+
 function clearAll() {
     gameOver_div.classList.add('hidden');
+    gameOver_div.style.display = '';
     directions_div.classList.add('hidden');
     start_btn.classList.add('hidden');
     practice_div.classList.add('hidden');
     quiz_div.classList.add('hidden');
     leftDeck_div.classList.add('hidden');
     rightDeck_div.classList.add('hidden');
-
     
     if(intervalId){
         clearInterval(intervalId);
@@ -306,6 +319,10 @@ function clearAll() {
     countdown_div.style.display = 'flex';
     
     setTimeout(startCountdown, 1000);
+}
+
+function closeModal() {
+    modal.style.display = "none";
 }
 
 start_btn.addEventListener('click', function() {
@@ -322,6 +339,7 @@ restart_btn.addEventListener('click', function() {
     end_btn.disabled = '';
     setTimeout(clearAll, 500);
 });
+
 end_btn.addEventListener('click', function () {
     end_btn.disabled = 'disabled';
     setTimeout(function() {
