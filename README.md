@@ -2,8 +2,6 @@
 
 ## What is That Zi?!
 
-Live application: [What is that Zi?!](https://what-is-that-zi.herokuapp.com/)
-
 ### Overview
 <em>What is that Zi?!</em> is an interactive flashcard/quiz that teaches users a few Chinese characters at a quick pace. Flashcards will show up for about 3 seconds each and then the quiz will start. There will be 2 answer choices with the definition. Choosing the correct one will place the card on the left hand side, otherwise it will be on the right side. Currently, Restart will restart with the current set of words. In the new future, I plan to add selections to either restart with current or new sets.
 
